@@ -110,4 +110,14 @@ const check_match = () => {
     return "";
 };
 
+const reset_board = () => {
+    play_board = ["", "", "", "", "", "", "", "", ""];
+    board_full = false;
+    winner.classList.remove("playerWin");
+    winner.classList.remove("computerWin");
+    winner.classList.remove("draw");
+    winner.innerText = "";
+    render_board();
+};
+
 render_board();
