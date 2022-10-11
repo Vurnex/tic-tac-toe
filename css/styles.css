@@ -96,4 +96,12 @@ button:hover {
 
 .draw {
   color: orangered;
+}
+
+.win {
+  background: rgb(15, 243, 15);
+}
+
+.win:hover {
+  background: rgb(15, 243, 15);
 }/*# sourceMappingURL=styles.css.map */

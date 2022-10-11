@@ -11,7 +11,7 @@ A simple game of Tic Tac Toe where the player can make a move and the computer w
 
 ## Frameworks and Tools Used
 
-- Bootstrap
+- Bootstrap (For Margin 0 and Box Sizing)
 - SASS
 
 ## Credits

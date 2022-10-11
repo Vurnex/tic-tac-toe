@@ -6,6 +6,7 @@ const computer = "O";
 
 const board_container = document.querySelector(".play-area");
 const winner_statement = document.getElementById("winner");
+const html_board = document.getElementsByClassName("block");
 
 const render_board = () => {
 
@@ -80,6 +81,7 @@ const check_for_winner = () => {
       winner.innerText = "The Match is a Draw!";
       winner.classList.add("draw");
     }
+
 };
 
 const check_line = (a, b, c) => {
@@ -93,19 +95,31 @@ const check_line = (a, b, c) => {
 const check_match = () => {
     for (i = 0; i < 9; i += 3) {
       if (check_line(i, i + 1, i + 2)) {
+        html_board[i].classList.add("win");
+        html_board[i + 1].classList.add("win");
+        html_board[i + 2].classList.add("win");
         return play_board[i];
       }
     }
     for (i = 0; i < 3; i++) {
       if (check_line(i, i + 3, i + 6)) {
+        html_board[i].classList.add("win");
+        html_board[i + 3].classList.add("win");
+        html_board[i + 6].classList.add("win");
         return play_board[i];
       }
     }
     if (check_line(0, 4, 8)) {
-      return play_board[0];
+        html_board[0].classList.add("win");
+        html_board[4].classList.add("win");
+        html_board[8].classList.add("win");
+        return play_board[0];
     }
     if (check_line(2, 4, 6)) {
-      return play_board[2];
+        html_board[2].classList.add("win");
+        html_board[4].classList.add("win");
+        html_board[6].classList.add("win");
+        return play_board[2];
     }
     return "";
 };
