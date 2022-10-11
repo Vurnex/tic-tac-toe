@@ -5,6 +5,7 @@ const player = "X";
 const computer = "O";
 
 const board_container = document.querySelector(".play-area");
+const winner_statement = document.getElementById("winner");
 
 const render_board = () => {
 
@@ -47,6 +48,7 @@ const addComputerMove = () => {
 const game_loop = () => {
     render_board();
     check_board_complete();
+    check_for_winner();
 };
 
 const check_board_complete = () => {
@@ -58,6 +60,54 @@ const check_board_complete = () => {
     });
   
     board_full = flag;
+};
+
+const check_for_winner = () => {
+
+    let res = check_match();
+
+    if (res == player) {
+      winner.innerText = "The Player Wins!";
+      winner.classList.add("playerWin");
+      board_full = true;
+    } 
+    else if (res == computer) {
+      winner.innerText = "The Computer Wins!";
+      winner.classList.add("computerWin");
+      board_full = true;
+    } 
+    else if (board_full) {
+      winner.innerText = "The Match is a Draw!";
+      winner.classList.add("draw");
+    }
+};
+
+const check_line = (a, b, c) => {
+    return (
+      play_board[a] == play_board[b] &&
+      play_board[b] == play_board[c] &&
+      (play_board[a] == player || play_board[a] == computer)
+    );
+};
+
+const check_match = () => {
+    for (i = 0; i < 9; i += 3) {
+      if (check_line(i, i + 1, i + 2)) {
+        return play_board[i];
+      }
+    }
+    for (i = 0; i < 3; i++) {
+      if (check_line(i, i + 3, i + 6)) {
+        return play_board[i];
+      }
+    }
+    if (check_line(0, 4, 8)) {
+      return play_board[0];
+    }
+    if (check_line(2, 4, 6)) {
+      return play_board[2];
+    }
+    return "";
 };
 
 render_board();
