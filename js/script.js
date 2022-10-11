@@ -1,4 +1,5 @@
 let play_board = ["", "", "", "", "", "", "", "", ""];
+let board_full = false;
 
 const player = "X";
 const computer = "O";
@@ -24,20 +25,39 @@ const render_board = () => {
 };
 
 const addPlayerMove = e => {
-    if (play_board[e] == "") {
-      play_board[e] = player;
-      render_board();
-      addComputerMove();
+
+    if (!board_full && play_board[e] == "") {
+        play_board[e] = player;
+        game_loop();
+        addComputerMove();
+    }
+};
+  
+const addComputerMove = () => {
+
+    if (!board_full) {
+      do {
+        selected = Math.floor(Math.random() * 9);
+      } while (play_board[selected] != "");
+      play_board[selected] = computer;
+      game_loop();
     }
 };
 
-const addComputerMove = () => {
-do {
-    selected = Math.floor(Math.random() * 9);
-} while (play_board[selected] != "");
-play_board[selected] = computer;
-render_board();
+const game_loop = () => {
+    render_board();
+    check_board_complete();
 };
+
+const check_board_complete = () => {
+    let flag = true;
+    play_board.forEach(element => {
+      if (element != player && element != computer) {
+        flag = false;
+      }
+    });
   
+    board_full = flag;
+};
 
 render_board();

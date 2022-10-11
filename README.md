@@ -7,7 +7,7 @@ A simple game of Tic Tac Toe where the player can make a move and the computer w
 ## Things I learned while working on this project
 
 - Factory Functions: How they work and their usage
-- 
+- Further usage of Arrow Functions
 
 ## Frameworks and Tools Used
 
